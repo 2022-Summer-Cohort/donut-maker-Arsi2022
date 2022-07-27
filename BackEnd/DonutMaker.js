@@ -1,26 +1,98 @@
-class DonutMaker{
-    constructor(donutCount, autoClickers, donutMultiplier){
-        this.donutCount = donutCount;
-        this.autoClickerCost = 10;
-        this.autoClickers = autoClickers;
-        this.donutMultiplier = donutMultiplier;
-        this.donutMultiplierCost = 10;
-        
+class DonutMaker {
+    constructor() {
+      this.donutCount = 0;
+      this.MultiplierCount = 0;
+      this.MultiplierCost = 10;
+      this.autoClickerCount = 0;
+      this.autoClickerCost = 100;
     }
-    get donutCount(){
-        return this.donutCount;
+    
+    
+    calculateMultiplierValue() {
+      return Math.pow(1.2, this.MultiplierCount);
     }
-    get donutMultiplier(){
-        return this.donutMultiplier;
+    
+    addDonut() {
+      this.donutCount += 1 * this.calculateMultiplierValue();
     }
-    get autoClickers(){
-        return this.autoClickers;
-
+  
+    getClickCount() {
+      return Math.round(this.donutCount);
     }
-    bakeDonut(){
-        this.donutCount += 1;
-        
+  
+    getMultiplierCount() {
+      return this.MultiplierCount;
     }
-
-}cd
-export default DonutMaker;
+  
+    getMultiplierCost() {
+      return this.MultiplierCost;
+    }
+  
+    getAutoClickerCount() {
+      return this.autoClickerCount;
+    }
+  
+    getAutoClickerCost() {
+      return this.autoClickerCost;
+    }
+  
+    subtractAutoClickerCostFromDonutCount() {
+      this.donutCount -= Math.round(this.autoClickerCost);
+    }
+    
+    increaseAutoClickerCost() {
+      this.autoClickerCost += this.autoClickerCost * 0.1;
+    }
+    
+    purchaseAutoClicker() {
+      this.autoClickerCount += 1;
+      this.subtractAutoClickerCostFromDonutCount();
+      this.increaseAutoClickerCost();
+    }
+  
+    notEnoughForAutoClickers() {
+      return this.donutCount < this.autoClickerCost;
+    }
+  
+    checkDonutCountToBuyAutoClicker() {
+      if (this.notEnoughForAutoClickers()) {
+        throw new Error("Not enough donuts to purchase.");
+      } else {
+        this.purchaseAutoClicker();
+      }
+    }
+  
+    activateAutoClickers() {
+      for (let i = 0; i < this.autoClickerCount; i++) {
+        this.addDonut();
+      }
+    }
+  
+    subtractMultiplierCostFromDonutCount() {
+      this.donutCount -= Math.round(this.MultiplierCost);
+    }
+  
+    increaseMultiplierCost() {
+      this.MultiplierCost += this.MultiplierCost * 0.1;
+    }
+    
+    purchaseMultiplier() {
+      this.MultiplierCount += 1;
+      this.subtractMultiplierCostFromDonutCount();
+      this.increaseMultiplierCost();
+    }
+  
+    notEnoughForMultiplier() {
+      return this.donutCount < this.MultiplierCost;
+    }
+  
+    checkDonutCountToBuyMultiplier() {
+      if (this.notEnoughForMultiplier) {
+        throw new Error("Not enough donuts to purchase.");
+      } else {
+        this.purchaseMultiplier;
+      }
+    }
+  }
+  
+  export default DonutMaker;

@@ -1,23 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Donut Clicker</title>
-  </head>
-  <body>
-    <header class="header">Freds Donut Bakery</header>
-    <h1 id="donutCount">0</h1>
-    <button id="bakeDonut">Bake Donut</button>
-    <h1 id="autoClickers">0</h1>
-    <button id="buyautoclickers">Buy Auto Clickers</button>
-    <h1 id="donutMultiplierCount">0</h1>
-    <button id="buydonutMultiplier">Buy Donut Multiplier</button>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="src/css/style.css">
+  <title>Donut Clicker</title>
+</head>
 
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <button class="collapse">Fred the Baker Baking Company</button>
+        <div class="content">
+          <p>Fred got tired of baking bakery items for the past 50 years, so we've created an automation system that will render endless amounts of donuts!</p>
+        </div>
+      </div>
+      <div>
+        <button class="collapse">Inspiration</button>
+        <div class="content">
+          <p><a href="https://orteil.dashnet.org/cookieclicker/">Cookie Cutter</a></p>
+        </div>
+      </div>
+      <div>
+        <button class="collapse">Developer</button>
+        <div class="content">
+          <p>Arsema Berhe <a href="#">LinkedIn</a>, <a href="#">GitHub</a></p>
+        </div>
+      </div>
+      <script src="BackEnd/header.js"></script>
+      <h1>Donut Clicker</h1>
+    </header>
 
+    <main>
+      <section class="donutMaker">
+        <img src="src/images/dounut.png" name="donutButton" alt="jsButton" id="donutButton">
+        <h2><span id="donutCountDisplay">0</span> Donuts</h2>
+      </section>
+      <div class="upgrades">
+        <section id="autoClicker">
+          <button id="autoClickerBtn">Buy Auto Clickers</button>
 
-    <script src="./index.js"></script>
-  </body>
+          <h3>Auto Clicker Price: <span id="autoPrice">100</span>
+          </h3>
+
+          <h3 class="price">Total Purchased:</h3>
+          <h2><span id="autoClickerTotal">0</span></h2>
+        </section>
+
+        <section id="clickMultiplier">
+          <button id="multiplierBtn">Multiply Donuts</button>
+          <h3>Multiplier Cost: <span id="clickMultiplierCost">10</span></h3>
+
+          <h3 class="price">Total Purchased:</h3>
+          <h2><span id="multiplierTotal"></span></h2>
+        </section>
+      </div>
+
+      <section class="reset">
+        <button id="reset-button">RESET</button>
+      </section>
+    </main>
+  </div>
+  <script src="/BackEnd/app.js" type="module"></script>
+</body>
+
 </html>
